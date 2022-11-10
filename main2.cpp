@@ -4,6 +4,8 @@
 #include <ctime>
 #include <string.h>
 
+using namespace std;
+
 static const int N = 11454;
 char words[N][6], solution[6], input[6], precison[6]; // matricea cu dictionarul -- cuvantul solutie -- input-ul jucatorului -- output-ul jocului
 int excludedLetters[26], numberOfLetters[26];
@@ -23,7 +25,7 @@ bool isSolution()
 
 void winGame()
 {
-    std::cout << "You guessed the word!";
+    cout << "You guessed the word!";
 }
 
 void showPossibleLetters()
@@ -32,17 +34,17 @@ void showPossibleLetters()
     {
         if (!excludedLetters[i] || (numberOfLetters[i] != 0))
         {
-            std::cout << char(i + 65) << ' ';
+            cout << char(i + 65) << ' ';
         }
     }
-    std::cout << std::endl;
+    cout << endl;
 }
 
 int getInput()
 {
-    std::cin.get(input, 6);
-    std::string overflow;
-    std::getline(std::cin, overflow);
+    cin.get(input, 6);
+    string overflow;
+    getline(cin, overflow);
     for (int i = 0; i < 5; i++)
     {
         if (input[i] >= 'a' && input[i] <= 'z')
@@ -90,7 +92,7 @@ bool isValidInput()
 
 void getWord()
 {
-    std::ifstream in("cuv.txt");
+    ifstream in("cuv.txt");
     for (int i = 0; i < N; i++)
     {
         in.get(words[i], 6);
@@ -160,9 +162,9 @@ void compareInput()
     }
     for (int i = 0; i < 5; i++)
     {
-        std::cout << precison[i];
+        cout << precison[i];
     }
-    std::cout << std::endl;
+    cout << endl;
     showPossibleLetters();
 }
 
@@ -182,23 +184,23 @@ void Game()
 
 void runGame()
 {
-    std::cout << "Guess a 5 letter word!" << std::endl;
+    cout << "Guess a 5 letter word!" << endl;
     while (true)
     {
         if (getInput())
         {
-            std::cout << "Invalid input" << std::endl;
+            cout << "Invalid input" << endl;
             continue;
         }
         if (!isValidInput())
         {
-            std::cout << "Invalid input" << std::endl;
+            cout << "Invalid input" << endl;
             showPossibleLetters();
         }
         else if (isSolution())
         {
             winGame();
-            std::cin.get();
+            cin.get();
             break;
         }
         else
@@ -212,6 +214,6 @@ void runGame()
 int main()
 {
     Game();
-    std::cout<<solution<<std::endl;
+    cout << solution << endl;
     runGame();
 }
