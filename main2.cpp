@@ -149,6 +149,7 @@ void compareInput()
             if (isInSolution(input[i]) && (copy[input[i] - 65] != 0))
             {
                 precison[i] = '#';
+                copy[input[i] - 65]--;
             }
             else
             {
@@ -211,5 +212,6 @@ void runGame()
 int main()
 {
     Game();
+    std::cout<<solution<<std::endl;
     runGame();
 }
