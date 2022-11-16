@@ -120,6 +120,7 @@ void sortByEntropy(){
 }
 
 void getFeeback(){
+    // aici se citesc numerele de feedback (0,1,2) cu spatiu intre ele!
     cin>>feedback[0];
     cin>>feedback[1];
     cin>>feedback[2];
@@ -131,7 +132,7 @@ void filterWords(){
     for(int i = 0; i < N; i++){
         if(cuvinte[i].isValid){
             for(int j = 0; j < 5; j++){
-                if(feedback[j] == 2){//bifa
+                if(feedback[j] == 2){
                     if(cuvinte[i].cuv[j] != lastWordTried[j]){
                         cuvinte[i].isValid = false;
                     }
@@ -141,26 +142,11 @@ void filterWords(){
                         cuvinte[i].isValid = false;
                         }
                     }
-                    // char literaCuX = lastWordTried[j];
-                    // bool maiExista = false;
-                    // for(int k = 0; k < 5; k++){
-                    //     if((cuvinte[i].cuv[k] == literaCuX)&&(feedback[k] == 2)){
-                    //         maiExista = true;
-                    //     }
-                    // }
-                    // if(!maiExista){
-                    //     cuvinte[i].isValid = false;
-                    // }
                 }else if(feedback[j] == 1){
                     if((cuvinte[i].cuv[j] == lastWordTried[j])||(strchr(cuvinte[i].cuv,lastWordTried[j]) == NULL)){
                         cuvinte[i].isValid = false;
                     }
                 }
-                // if(feedback[j] == 0){
-                //     if(strchr(cuvinte[i].cuv, lastWordTried[j]) != NULL){
-                //         cuvinte[i].isValid = false;
-                //     }
-                // }
             }
         }
     }
@@ -177,6 +163,7 @@ void fillInGuessedLetters(){
 }
 
 void tryBestWord(){
+    //aici se afiseaza in consola cuvantul cu entropia cea mai mare 
     int i = 0;
     while(true){
         if(cuvinte[i].isValid){
@@ -194,6 +181,8 @@ int main(){
     while(true){
         resetMatrix();
         fillInMatrix();
+        //exista 2 functii de calcul cu entropie: calculateEntropy() este medota care tine cont ce litera anterioara
+        //calculateEntropy2() tine cont doar de pozitia pe care apare litera
         calculateEntropy();
         sortByEntropy();
         tryBestWord();

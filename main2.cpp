@@ -7,8 +7,8 @@
 using namespace std;
 
 static const int N = 11454;
-char words[N][6], solution[6], input[6], precison[6]; // matricea cu dictionarul -- cuvantul solutie -- input-ul jucatorului -- output-ul jocului
-int excludedLetters[26], numberOfLetters[26];
+char words[N][6], solution[6], input[6]; // matricea cu dictionarul -- cuvantul solutie -- input-ul jucatorului -- output-ul jocului
+int excludedLetters[26], numberOfLetters[26], precison[6];
 const char bifa = char(251);
 
 bool isSolution()
@@ -42,6 +42,7 @@ void showPossibleLetters()
 
 int getInput()
 {
+    //aici se citeste inputul de la utilizator
     cin.get(input, 6);
     string overflow;
     getline(cin, overflow);
@@ -139,7 +140,7 @@ void compareInput()
     {
         if (input[i] == solution[i])
         {
-            precison[i] = bifa;
+            precison[i] = 2;
             copy[input[i] - 65]--;
         }
     }
@@ -150,16 +151,17 @@ void compareInput()
         {
             if (isInSolution(input[i]) && (copy[input[i] - 65] != 0))
             {
-                precison[i] = '#';
+                precison[i] = 1;
                 copy[input[i] - 65]--;
             }
             else
             {
                 excludedLetters[input[i] - 65] = 1;
-                precison[i] = 'x';
+                precison[i] = 0;
             }
         }
     }
+    //aici se printeaza in consola vectorul precision(in care este dat feedback-ul) 0-nu exista 1-e pe alta pozitie 2-este corecta litera
     for (int i = 0; i < 5; i++)
     {
         cout << precison[i];
