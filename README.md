@@ -2,6 +2,8 @@
 
 A terminal implementation for the Wordle game with the option to solve the game automatically using probability.
 
+_The words for the game are in romanian._
+
 ## Installation and Compilation
 
 Get the source code by either:
