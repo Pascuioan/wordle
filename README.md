@@ -8,6 +8,6 @@ _The words for the game are in romanian._
 
 Get the source code by either:
  * Cloning the repository: `git clone https://github.com/Pascuioan/wordle`
- * Dowloading the [source code](https://github.com/Pascuioan/wordle/archive/refs/tags/Wordle.zip)
+ * Dowloading the [source code](https://github.com/Pascuioan/wordle/archive/refs/tags/final.zip)
 
 Build the app by using the `make` command inside the source code folder, then run the app using `./game.exe`.
